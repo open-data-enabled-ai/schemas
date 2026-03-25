@@ -1,0 +1,23 @@
+{
+    "name": "@open-data-enabled-ai/schemas",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "Curated, AI-ready schemas for public data sources — validated, tested, open source.",
+    "license": "MIT",
+    "engines": {
+        "node": "22.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/open-data-enabled-ai/schemas"
+    },
+    "keywords": [
+        "open-data",
+        "mcp",
+        "flowmcp",
+        "ai",
+        "schemas",
+        "public-data",
+        "agents"
+    ]
+}
