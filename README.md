@@ -123,7 +123,9 @@ Ticketkauf  Radparken  Navigator  Emergency
   - Weather   - Nextbike  - Weather   - Hotels
 ```
 
-At the hackathon, we demonstrated this with **5 agents, 9 schemas, and 27 tools**. Every new schema that gets added makes every agent smarter.
+**Phase 1 (complete):** At the hackathon, we demonstrated this with 5 agents, 9 schemas, and 27 tools as a standalone chat app — an end-to-end proof of concept. [Details →](https://open-data-enabled-ai.github.io/docs/standalone-chat-app/)
+
+**Phase 2 (in progress):** We are now validating schemas with data partners and preparing client integration. Every new schema that gets added makes every agent smarter.
 
 ---
 
