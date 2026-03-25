@@ -8,6 +8,8 @@
 
 > 3rd place — "Anschluss erreichen" Hackathon (DB mindbox, Berlin, March 2026)
 
+<img src="docs/pilot-programm-flyer.png" alt="Pilot Program — Become a Data Partner" width="500" />
+
 ---
 
 ## What Is This?
