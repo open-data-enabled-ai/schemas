@@ -1,7 +1,7 @@
 {
-    "generated": "2026-03-28T21:41:00.530Z",
-    "totalNamespaces": 11,
-    "totalTools": 47,
+    "generated": "2026-03-28T22:13:22.145Z",
+    "totalNamespaces": 10,
+    "totalTools": 44,
     "totalResources": 0,
     "namespaces": [
         {
@@ -68,42 +68,6 @@
                         {
                             "name": "formatDatetime",
                             "description": "Convert a date string between formats. Use this when you have a date in one format and need it in another format for a different API. Supports ISO, German (DD.MM.YYYY), compact (YYYYMMDD), FlixBus (DD.MM.YYYY), and more.",
-                            "method": "GET"
-                        }
-                    ],
-                    "resources": [],
-                    "prompts": [],
-                    "skills": []
-                }
-            ],
-            "toolCount": 3,
-            "resourceCount": 0,
-            "promptCount": 0,
-            "skillCount": 0
-        },
-        {
-            "namespace": "flixbus",
-            "name": "FlixBus",
-            "description": "Search FlixBus and FlixTrain connections across Europe. Find cities and stations via autocomplete, search trips with real-time prices and availability, and discover departure stations. Free API, no authentication required.",
-            "root": "https://global.api.flixbus.com",
-            "requiresApiKey": false,
-            "schemas": [
-                {
-                    "file": "schemas/flixbus/flixbus.mjs",
-                    "tools": [
-                        {
-                            "name": "autocompleteCities",
-                            "description": "Search for FlixBus cities by name. Returns matching cities with UUIDs, coordinates, country, and whether they have a train station. Use the returned city ID for trip searches.",
-                            "method": "GET"
-                        },
-                        {
-                            "name": "autocompleteStations",
-                            "description": "Search for FlixBus stations (bus stops) by name. Returns specific departure/arrival points within cities including address, city assignment, and whether it is a train station.",
-                            "method": "GET"
-                        },
-                        {
-                            "name": "searchTrips",
-                            "description": "Search for FlixBus/FlixTrain trips between two cities. Returns available connections with prices, departure/arrival times, duration, available seats, and transport details. City IDs can be obtained from autocompleteCities. IMPORTANT: departure_date must be DD.MM.YYYY format. Do NOT set products — the default {\"adult\":1} is correct.",
                             "method": "GET"
                         }
                     ],
