@@ -1,0 +1,474 @@
+{
+    "generated": "2026-03-28T21:41:00.530Z",
+    "totalNamespaces": 11,
+    "totalTools": 47,
+    "totalResources": 0,
+    "namespaces": [
+        {
+            "namespace": "brightsky",
+            "name": "Bright Sky",
+            "description": "Access German weather data from DWD (Deutscher Wetterdienst) including hourly forecasts, current conditions, weather alerts, and rainfall radar.",
+            "root": "https://api.brightsky.dev",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/bright-sky/bright-sky.mjs",
+                    "tools": [
+                        {
+                            "name": "getWeather",
+                            "description": "Retrieve hourly weather observations and forecasts for a location in Germany. Provide location via lat/lon or DWD station ID, and a start date.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getCurrentWeather",
+                            "description": "Get the most recent weather observations for a location in Germany. Returns current conditions from the nearest DWD station.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getAlerts",
+                            "description": "Retrieve active weather alerts from DWD for a specific location in Germany. Returns all active alerts if no location is specified.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getSources",
+                            "description": "List available DWD weather observation stations near a given location, including station metadata and data availability.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 4,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "datetimeutils",
+            "name": "Datetime Utils",
+            "description": "Date and time utility tools for current datetime, arithmetic and format conversion. Pure local computation, no external API needed. Useful for travel queries, schedule searches, and date formatting across different API requirements.",
+            "root": "",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/datetime-utils/datetimeUtils.mjs",
+                    "tools": [
+                        {
+                            "name": "getCurrentDatetime",
+                            "description": "Get current date and time. Use this when you need to know the current date for travel queries, weather lookups, schedule searches, or ticket bookings. Supports multiple output formats and timezones.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "addToDatetime",
+                            "description": "Add hours, days, or minutes to a date. Use this for relative time expressions like \"tomorrow\", \"in 2 hours\", \"next week\". If no base date is given, uses current time. Returns result in requested format.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "formatDatetime",
+                            "description": "Convert a date string between formats. Use this when you have a date in one format and need it in another format for a different API. Supports ISO, German (DD.MM.YYYY), compact (YYYYMMDD), FlixBus (DD.MM.YYYY), and more.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 3,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "flixbus",
+            "name": "FlixBus",
+            "description": "Search FlixBus and FlixTrain connections across Europe. Find cities and stations via autocomplete, search trips with real-time prices and availability, and discover departure stations. Free API, no authentication required.",
+            "root": "https://global.api.flixbus.com",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/flixbus/flixbus.mjs",
+                    "tools": [
+                        {
+                            "name": "autocompleteCities",
+                            "description": "Search for FlixBus cities by name. Returns matching cities with UUIDs, coordinates, country, and whether they have a train station. Use the returned city ID for trip searches.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "autocompleteStations",
+                            "description": "Search for FlixBus stations (bus stops) by name. Returns specific departure/arrival points within cities including address, city assignment, and whether it is a train station.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "searchTrips",
+                            "description": "Search for FlixBus/FlixTrain trips between two cities. Returns available connections with prices, departure/arrival times, duration, available seats, and transport details. City IDs can be obtained from autocompleteCities. IMPORTANT: departure_date must be DD.MM.YYYY format. Do NOT set products — the default {\"adult\":1} is correct.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 3,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "infravelo",
+            "name": "infraVelo - Berlin Cycling Infrastructure",
+            "description": "Access Berlin cycling infrastructure project data from infraVelo. Get details on bike lanes, parking facilities, traffic signals, and infrastructure projects with geographic coordinates, status, milestones, and costs. GeoJSON format. Free, no API key required. License: dl-de/by-2-0.",
+            "root": "https://www.infravelo.de/api/v1",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/infravelo/infravelo.mjs",
+                    "tools": [
+                        {
+                            "name": "getAllProjects",
+                            "description": "Get all cycling infrastructure projects in Berlin as GeoJSON FeatureCollection. Includes bike lanes, parking, traffic signals with coordinates, status, district, and cost info.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getProjectsByDistrict",
+                            "description": "Get cycling infrastructure projects filtered by Berlin district (Bezirk). Returns GeoJSON FeatureCollection.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 2,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "nextbike",
+            "name": "nextbike Bike Sharing",
+            "description": "Access nextbike bike sharing data via the legacy API. Get station locations, real-time bike availability, and system information for 50+ German networks including Berlin, Leipzig, and more. Free, no API key required.",
+            "root": "https://api.nextbike.net/maps",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/nextbike/nextbike.mjs",
+                    "tools": [
+                        {
+                            "name": "getStationsAndBikes",
+                            "description": "Get all stations and available bikes for a nextbike city/network. Returns station locations, capacity, available bikes by type, and individual bike details. Use city parameter for specific networks (e.g. 362 for Berlin).",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getAllNetworks",
+                            "description": "Get a list of all nextbike networks/cities worldwide with summary statistics. Returns country, city names, available bikes count, and network metadata. No city parameter returns all networks.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 2,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "nominatim",
+            "name": "Nominatim",
+            "description": "Geocode addresses and place names to coordinates, and reverse geocode coordinates to human-readable addresses using OpenStreetMap data.",
+            "root": "https://nominatim.openstreetmap.org",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/nominatim/nominatim.mjs",
+                    "tools": [
+                        {
+                            "name": "search",
+                            "description": "Search for places by free-form query or structured address components. Returns geocoded results with coordinates and metadata.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "reverse",
+                            "description": "Convert geographic coordinates (latitude and longitude) to a human-readable address using reverse geocoding.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "lookup",
+                            "description": "Look up address details for one or more OpenStreetMap objects by their OSM type and ID.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 3,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "overpassmobility",
+            "name": "Overpass Station Mobility",
+            "description": "Specialized OpenStreetMap queries for mobility infrastructure around train stations. Find bike parking (with capacity/type), bus stops, accessibility features (elevators/wheelchair/tactile paving), and nearby amenities. All via Overpass API, free, no key required.",
+            "root": "https://overpass-api.de/api",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/overpass-mobility/overpassMobility.mjs",
+                    "tools": [
+                        {
+                            "name": "findStationMobility",
+                            "description": "Find ALL connecting mobility options around a station: bus stops, tram stops, taxi stands, bike rental, car sharing, bike parking. Returns a unified view of intermodal connections.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "findBikeInfrastructure",
+                            "description": "Find bike parking spots, bike rental stations, and bike repair stations near coordinates. Returns capacity, type (stands/lockers/shed/wall_loops), covered status, fee, and operator.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "findAccessibility",
+                            "description": "Find accessibility features near a station: elevators, wheelchair-accessible entrances, tactile paving, accessible toilets, audio signals at crossings. Essential for barrier-free journey planning.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "findStationAmenities",
+                            "description": "Find essential amenities near a station: cafes, toilets, ATMs, pharmacies. Focused on the most common traveler needs for fast reliable results.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "findAccommodation",
+                            "description": "Find hotels and hostels near coordinates. Returns name, address, phone, website, wheelchair access, and email. Essential for stranded travelers needing overnight accommodation.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 5,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "transportrestdb",
+            "name": "transport.rest DB",
+            "description": "Access Deutsche Bahn (German Railway) data via the transport.rest API. Search stations, get real-time departures and arrivals, plan journeys across all DB services (ICE, IC, RE, RB, S-Bahn), and retrieve trip details. Free, no API key required.",
+            "root": "https://v6.db.transport.rest",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/transport-rest-db/transportRestDb.mjs",
+                    "tools": [
+                        {
+                            "name": "searchLocations",
+                            "description": "Search for stations and addresses by name. Returns matching locations with coordinates, product availability (ICE, IC, regional, S-Bahn, bus), and station weight (importance).",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getStop",
+                            "description": "Get detailed information about a specific stop/station by its IBNR ID including name, coordinates, available transport products, and connected lines.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getDepartures",
+                            "description": "Get real-time departures from a station. Returns scheduled and real-time departure times, platform, line name, direction, and delay information for all transport modes.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getArrivals",
+                            "description": "Get real-time arrivals at a station. Returns scheduled and actual arrival times, origin, platform, delay, and line information.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "planJourney",
+                            "description": "Plan a journey between two stations. IMPORTANT: from and to MUST be IBNR station IDs (e.g. 8000191 for Karlsruhe Hbf, 8011160 for Berlin Hbf). Use searchStations first to get the IBNR. Do NOT pass city names. Set tickets=true for prices.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getNearbyLocations",
+                            "description": "Find stops and stations near geographic coordinates. Returns nearby locations sorted by walking distance in meters.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "searchStations",
+                            "description": "Autocomplete DB station names using the db-stations dataset. Returns richer data than /locations including address, operator, category, and facilities.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getTrip",
+                            "description": "Get detailed information about a specific trip including all stops, arrival/departure times, delays, and current position. Use tripId from departures or journey results.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 8,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "transportrestvbb",
+            "name": "transport.rest VBB",
+            "description": "Access Berlin-Brandenburg public transit data (VBB) via the transport.rest API. Search stations, get real-time departures and arrivals for S-Bahn, U-Bahn, tram, bus, and regional trains, plan journeys, track vehicles in real-time, and find reachable stops. Free, no API key required.",
+            "root": "https://v6.vbb.transport.rest",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/transport-rest-vbb/transportRestVbb.mjs",
+                    "tools": [
+                        {
+                            "name": "searchLocations",
+                            "description": "Search for stops, stations, and addresses in the VBB network by name. Returns matching locations with coordinates, available transport products (S-Bahn, U-Bahn, tram, bus, ferry, regional), and station weight.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getStop",
+                            "description": "Get detailed information about a specific stop/station by its VBB stop ID including name, coordinates, available products, and connected lines.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getDepartures",
+                            "description": "Get real-time departures from a VBB stop/station. Returns scheduled and actual departure times, platform, line name, direction, delay, and transport mode for all VBB services.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getArrivals",
+                            "description": "Get real-time arrivals at a VBB stop/station. Returns scheduled and actual arrival times, origin, platform, delay, and line information.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getRadar",
+                            "description": "Get real-time positions of vehicles in a geographic bounding box. Returns active vehicles with their current coordinates, line info, and trip details. Only available for VBB network.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getReachableFrom",
+                            "description": "Find stops reachable from a given location within a travel time limit. Requires address, latitude, and longitude. Returns stops grouped by travel duration.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "planJourney",
+                            "description": "Plan a journey between two VBB stops/stations. Returns journey options with legs, transfers, duration, and real-time delay information. Use stop IDs from searchLocations.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 7,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "transportrestvbbext",
+            "name": "transport.rest VBB Extended",
+            "description": "Extended Berlin-Brandenburg transit tools: nearby stops, trip search, line info, route shapes, station autocomplete, and journey refresh. Complements the core VBB schema. Free, no API key required.",
+            "root": "https://v6.vbb.transport.rest",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/transport-rest-vbb/transportRestVbbExtended.mjs",
+                    "tools": [
+                        {
+                            "name": "getNearbyLocations",
+                            "description": "Find stops and stations near geographic coordinates. Returns nearby locations sorted by walking distance in meters.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getTrip",
+                            "description": "Get detailed trip information including all stopovers, times, delays, and current position. Use tripId from departures or journey results.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "searchTrips",
+                            "description": "Search for currently running trips by line name, operator, or stop. Returns active vehicles with real-time positions and stopovers. VBB-exclusive endpoint.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "searchStations",
+                            "description": "Autocomplete VBB station names using vbb-stations dataset. Returns richer data than /locations including address and facilities.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getLines",
+                            "description": "Search and filter VBB transit lines by name, operator, or transport mode. Returns line details with route variants.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getLine",
+                            "description": "Get detailed information about a specific transit line including all route variants with stop sequences.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getShape",
+                            "description": "Get GeoJSON geographic shape data for a route. Use shape IDs from trip or line data for route visualization on maps.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 7,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "vlocker",
+            "name": "V-Locker",
+            "description": "Access V-Locker smart bicycle parking infrastructure in Switzerland — tower groups, box availability, and community location wishes",
+            "root": "https://live.v-locker.ch",
+            "requiresApiKey": false,
+            "schemas": [
+                {
+                    "file": "schemas/vlocker/vlocker.mjs",
+                    "tools": [
+                        {
+                            "name": "getTowerGroups",
+                            "description": "List all V-Locker tower groups (locations) with capacity, availability, geo coordinates, tariffs, and payment methods. Returns 17 locations worldwide.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getBoxAvailability",
+                            "description": "Get box availability breakdown by type for a specific tower group. Use towerGroupId from getTowerGroups results.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getTowerWishes",
+                            "description": "List all community-submitted location wishes for new V-Locker installations. Returns 502 wishes.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 3,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        }
+    ]
+}

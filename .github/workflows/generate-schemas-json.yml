@@ -1,0 +1,30 @@
+name: Generate schemas.json
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'schemas/**'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate schemas.json
+        run: node scripts/generate-schemas-json.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add schemas.json
+          git diff --staged --quiet || git commit -m "chore: update schemas.json [auto-generated]"
+          git push
