@@ -2,13 +2,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![FlowMCP v3.0.0](https://img.shields.io/badge/FlowMCP-v3.0.0-blue.svg)](https://docs.flowmcp.org)
-[![Pilot Program](https://img.shields.io/badge/Pilot_Program-Open-brightgreen.svg)](https://open-data-enabled-ai.github.io/docs/partner)
+[![Pilot Program](https://img.shields.io/badge/Pilot_Program-Open-brightgreen.svg)](https://open-data-enabled-ai.github.io/partner)
 
 **AI-ready schemas and agents for public data sources — validated, tested, open source.**
 
 > 3rd place — "Anschluss erreichen" Hackathon (DB mindbox, Berlin, March 2026)
 
-<img src="https://open-data-enabled-ai.github.io/docs/assets/pilot-programm-flyer.png" alt="Pilot Program — Become a Data Partner" width="500" />
+<img src="https://open-data-enabled-ai.github.io/assets/pilot-programm-flyer.png" alt="Pilot Program — Become a Data Partner" width="500" />
 
 ---
 
@@ -123,7 +123,7 @@ Ticketkauf  Radparken  Navigator  Emergency
   - Weather   - Nextbike  - Weather   - Hotels
 ```
 
-**Phase 1 (complete):** At the hackathon, we demonstrated this with 5 agents, 9 schemas, and 27 tools as a standalone chat app — an end-to-end proof of concept. [Details →](https://open-data-enabled-ai.github.io/docs/standalone-chat-app/)
+**Phase 1 (complete):** At the hackathon, we demonstrated this with 5 agents, 9 schemas, and 27 tools as a standalone chat app — an end-to-end proof of concept. [Details →](https://open-data-enabled-ai.github.io/standalone-chat-app/)
 
 **Phase 2 (in progress):** We are now validating schemas with data partners and preparing client integration. Every new schema that gets added makes every agent smarter.
 
@@ -142,7 +142,7 @@ If you provide public data with a machine-readable interface:
 
 **Application deadline: April 30, 2026**
 
-**[Become a Data Partner](https://open-data-enabled-ai.github.io/docs/partner)**
+**[Become a Data Partner](https://open-data-enabled-ai.github.io/partner)**
 
 ---
 
@@ -167,8 +167,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add schemas, build agents, or 
 
 ## Links
 
-- [Documentation](https://open-data-enabled-ai.github.io/docs)
-- [Become a Data Partner](https://open-data-enabled-ai.github.io/docs/partner)
+- [Documentation](https://open-data-enabled-ai.github.io)
+- [Become a Data Partner](https://open-data-enabled-ai.github.io/partner)
 - [FlowMCP Framework](https://docs.flowmcp.org)
 - [Hackathon Project](https://github.com/open-data-enabled-ai/hackathon-anschluss-erreichen)
 
