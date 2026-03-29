@@ -13,13 +13,24 @@ const loadSchemas = async () => {
         .map( ( f ) => f.name )
         .sort()
 
-    const namespaces = {}
+    const providers = {}
 
     const processingResults = await Promise.allSettled(
         schemaFolders.map( async ( folder ) => {
             const folderPath = join( SCHEMAS_DIR, folder )
             const files = await readdir( folderPath )
             const mjsFiles = files.filter( ( f ) => f.endsWith( '.mjs' ) )
+
+            if ( !providers[folder] ) {
+                providers[folder] = {
+                    folder,
+                    schemas: [],
+                    toolCount: 0,
+                    resourceCount: 0,
+                    promptCount: 0,
+                    skillCount: 0
+                }
+            }
 
             const schemaResults = await Promise.allSettled(
                 mjsFiles.map( async ( file ) => {
@@ -32,7 +43,6 @@ const loadSchemas = async () => {
                         return null
                     }
 
-                    const namespace = schema.namespace || folder
                     const tools = schema.tools
                         ? Object.entries( schema.tools ).map( ( [ name, tool ] ) => ( {
                             name,
@@ -63,8 +73,8 @@ const loadSchemas = async () => {
                         : []
 
                     return {
-                        namespace,
-                        name: schema.name || namespace,
+                        namespace: schema.namespace || folder,
+                        name: schema.name || schema.namespace || folder,
                         description: schema.description || '',
                         root: schema.root || '',
                         version: schema.version || '',
@@ -82,54 +92,45 @@ const loadSchemas = async () => {
                 .filter( ( r ) => r.status === 'fulfilled' && r.value )
                 .map( ( r ) => r.value )
                 .forEach( ( entry ) => {
-                    if ( !namespaces[entry.namespace] ) {
-                        namespaces[entry.namespace] = {
-                            namespace: entry.namespace,
-                            name: entry.name,
-                            description: entry.description,
-                            root: entry.root,
-                            requiresApiKey: entry.requiresApiKey,
-                            schemas: [],
-                            toolCount: 0,
-                            resourceCount: 0,
-                            promptCount: 0,
-                            skillCount: 0
-                        }
-                    }
-
-                    const ns = namespaces[entry.namespace]
-                    ns.schemas.push( {
+                    const prov = providers[folder]
+                    prov.schemas.push( {
+                        namespace: entry.namespace,
+                        name: entry.name,
+                        description: entry.description,
+                        root: entry.root,
+                        requiresApiKey: entry.requiresApiKey,
                         file: entry.file,
                         tools: entry.tools,
                         resources: entry.resources,
                         prompts: entry.prompts,
                         skills: entry.skills
                     } )
-                    ns.toolCount += entry.tools.length
-                    ns.resourceCount += entry.resources.length
-                    ns.promptCount += entry.prompts.length
-                    ns.skillCount += entry.skills.length
+                    prov.toolCount += entry.tools.length
+                    prov.resourceCount += entry.resources.length
+                    prov.promptCount += entry.prompts.length
+                    prov.skillCount += entry.skills.length
                 } )
         } )
     )
 
-    return namespaces
+    return providers
 }
 
 const main = async () => {
-    const namespaces = await loadSchemas()
-    const sorted = Object.values( namespaces ).sort( ( a, b ) => a.namespace.localeCompare( b.namespace ) )
+    const providers = await loadSchemas()
+    const sorted = Object.values( providers ).sort( ( a, b ) => a.folder.localeCompare( b.folder ) )
 
     const output = {
         generated: new Date().toISOString(),
-        totalNamespaces: sorted.length,
-        totalTools: sorted.reduce( ( sum, ns ) => sum + ns.toolCount, 0 ),
-        totalResources: sorted.reduce( ( sum, ns ) => sum + ns.resourceCount, 0 ),
-        namespaces: sorted
+        totalProviders: sorted.length,
+        totalSchemas: sorted.reduce( ( sum, p ) => sum + p.schemas.length, 0 ),
+        totalTools: sorted.reduce( ( sum, p ) => sum + p.toolCount, 0 ),
+        totalResources: sorted.reduce( ( sum, p ) => sum + p.resourceCount, 0 ),
+        providers: sorted
     }
 
     await writeFile( OUTPUT_PATH, JSON.stringify( output, null, 4 ), 'utf-8' )
-    console.log( `Generated ${OUTPUT_PATH}: ${sorted.length} namespaces, ${output.totalTools} tools` )
+    console.log( `Generated ${OUTPUT_PATH}: ${sorted.length} providers, ${output.totalSchemas} schemas, ${output.totalTools} tools` )
 }
 
 main().catch( console.error )

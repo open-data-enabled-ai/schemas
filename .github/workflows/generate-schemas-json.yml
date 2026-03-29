@@ -6,6 +6,9 @@ on:
     paths:
       - 'schemas/**'
 
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest

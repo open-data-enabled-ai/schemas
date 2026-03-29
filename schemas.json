@@ -1,17 +1,19 @@
 {
-    "generated": "2026-03-29T14:31:17.922Z",
-    "totalNamespaces": 14,
+    "generated": "2026-03-29T19:37:56.074Z",
+    "totalProviders": 9,
+    "totalSchemas": 14,
     "totalTools": 55,
     "totalResources": 0,
-    "namespaces": [
+    "providers": [
         {
-            "namespace": "brightsky",
-            "name": "Bright Sky",
-            "description": "Access German weather data from DWD (Deutscher Wetterdienst) including hourly forecasts, current conditions, weather alerts, and rainfall radar.",
-            "root": "https://api.brightsky.dev",
-            "requiresApiKey": false,
+            "folder": "brightsky",
             "schemas": [
                 {
+                    "namespace": "brightsky",
+                    "name": "Bright Sky",
+                    "description": "Access German weather data from DWD (Deutscher Wetterdienst) including hourly forecasts, current conditions, weather alerts, and rainfall radar.",
+                    "root": "https://api.brightsky.dev",
+                    "requiresApiKey": false,
                     "file": "schemas/brightsky/bright-sky.mjs",
                     "tools": [
                         {
@@ -46,13 +48,14 @@
             "skillCount": 0
         },
         {
-            "namespace": "datetimeutils",
-            "name": "Datetime Utils",
-            "description": "Date and time utility tools for current datetime, arithmetic and format conversion. Pure local computation, no external API needed. Useful for travel queries, schedule searches, and date formatting across different API requirements.",
-            "root": "",
-            "requiresApiKey": false,
+            "folder": "datetimeutils",
             "schemas": [
                 {
+                    "namespace": "datetimeutils",
+                    "name": "Datetime Utils",
+                    "description": "Date and time utility tools for current datetime, arithmetic and format conversion. Pure local computation, no external API needed. Useful for travel queries, schedule searches, and date formatting across different API requirements.",
+                    "root": "",
+                    "requiresApiKey": false,
                     "file": "schemas/datetimeutils/datetimeUtils.mjs",
                     "tools": [
                         {
@@ -82,13 +85,14 @@
             "skillCount": 0
         },
         {
-            "namespace": "dbrisboards",
-            "name": "DB RIS::Boards",
-            "description": "Access Deutsche Bahn departure and arrival boards via RIS::Boards API. Get real-time departure/arrival information with delays, platform changes, and train details for any station. Requires DB Vertriebspartner access (paid, price on request).",
-            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-boards-netz/v1",
-            "requiresApiKey": true,
+            "folder": "dbris",
             "schemas": [
                 {
+                    "namespace": "dbrisboards",
+                    "name": "DB RIS::Boards",
+                    "description": "Access Deutsche Bahn departure and arrival boards via RIS::Boards API. Get real-time departure/arrival information with delays, platform changes, and train details for any station. Requires DB Vertriebspartner access (paid, price on request).",
+                    "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-boards-netz/v1",
+                    "requiresApiKey": true,
                     "file": "schemas/dbris/dbRisBoards.mjs",
                     "tools": [
                         {
@@ -105,21 +109,13 @@
                     "resources": [],
                     "prompts": [],
                     "skills": []
-                }
-            ],
-            "toolCount": 2,
-            "resourceCount": 0,
-            "promptCount": 0,
-            "skillCount": 0
-        },
-        {
-            "namespace": "dbrisconnections",
-            "name": "DB RIS::Connections",
-            "description": "Access Deutsche Bahn connection/transfer options via RIS::Connections API. Find connecting services at stations — the core theme of the \"Anschluss erreichen\" hackathon. Requires DB Vertriebspartner access (paid, price on request).",
-            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-connections-netz/v1",
-            "requiresApiKey": true,
-            "schemas": [
+                },
                 {
+                    "namespace": "dbrisconnections",
+                    "name": "DB RIS::Connections",
+                    "description": "Access Deutsche Bahn connection/transfer options via RIS::Connections API. Find connecting services at stations — the core theme of the \"Anschluss erreichen\" hackathon. Requires DB Vertriebspartner access (paid, price on request).",
+                    "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-connections-netz/v1",
+                    "requiresApiKey": true,
                     "file": "schemas/dbris/dbRisConnections.mjs",
                     "tools": [
                         {
@@ -131,21 +127,13 @@
                     "resources": [],
                     "prompts": [],
                     "skills": []
-                }
-            ],
-            "toolCount": 1,
-            "resourceCount": 0,
-            "promptCount": 0,
-            "skillCount": 0
-        },
-        {
-            "namespace": "dbrisjourneys",
-            "name": "DB RIS::Journeys + Disruptions",
-            "description": "Access Deutsche Bahn journey and disruption data via RIS APIs. Get real-time journey details with all stops, delays, and current position. Query disruptions affecting services. Requires DB Vertriebspartner access (paid, price on request).",
-            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-journeys-netz/v2",
-            "requiresApiKey": true,
-            "schemas": [
+                },
                 {
+                    "namespace": "dbrisjourneys",
+                    "name": "DB RIS::Journeys + Disruptions",
+                    "description": "Access Deutsche Bahn journey and disruption data via RIS APIs. Get real-time journey details with all stops, delays, and current position. Query disruptions affecting services. Requires DB Vertriebspartner access (paid, price on request).",
+                    "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-journeys-netz/v2",
+                    "requiresApiKey": true,
                     "file": "schemas/dbris/dbRisJourneys.mjs",
                     "tools": [
                         {
@@ -162,21 +150,13 @@
                     "resources": [],
                     "prompts": [],
                     "skills": []
-                }
-            ],
-            "toolCount": 2,
-            "resourceCount": 0,
-            "promptCount": 0,
-            "skillCount": 0
-        },
-        {
-            "namespace": "dbrisstations",
-            "name": "DB RIS::Stations",
-            "description": "Access Deutsche Bahn station data via RIS::Stations API. Search stations by name, position, or key (EVA, DS100, DHID). Get platforms, sectors, connecting times, equipment, and local services. Free test access (2 months, 10K/month). Paid plans from 4,200 EUR/year.",
-            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-stations/v1",
-            "requiresApiKey": true,
-            "schemas": [
+                },
                 {
+                    "namespace": "dbrisstations",
+                    "name": "DB RIS::Stations",
+                    "description": "Access Deutsche Bahn station data via RIS::Stations API. Search stations by name, position, or key (EVA, DS100, DHID). Get platforms, sectors, connecting times, equipment, and local services. Free test access (2 months, 10K/month). Paid plans from 4,200 EUR/year.",
+                    "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-stations/v1",
+                    "requiresApiKey": true,
                     "file": "schemas/dbris/dbRisStations.mjs",
                     "tools": [
                         {
@@ -215,19 +195,20 @@
                     "skills": []
                 }
             ],
-            "toolCount": 6,
+            "toolCount": 11,
             "resourceCount": 0,
             "promptCount": 0,
             "skillCount": 0
         },
         {
-            "namespace": "infravelo",
-            "name": "infraVelo - Berlin Cycling Infrastructure",
-            "description": "Access Berlin cycling infrastructure project data from infraVelo. Get details on bike lanes, parking facilities, traffic signals, and infrastructure projects with geographic coordinates, status, milestones, and costs. GeoJSON format. Free, no API key required. License: dl-de/by-2-0.",
-            "root": "https://www.infravelo.de/api/v1",
-            "requiresApiKey": false,
+            "folder": "infravelo",
             "schemas": [
                 {
+                    "namespace": "infravelo",
+                    "name": "infraVelo - Berlin Cycling Infrastructure",
+                    "description": "Access Berlin cycling infrastructure project data from infraVelo. Get details on bike lanes, parking facilities, traffic signals, and infrastructure projects with geographic coordinates, status, milestones, and costs. GeoJSON format. Free, no API key required. License: dl-de/by-2-0.",
+                    "root": "https://www.infravelo.de/api/v1",
+                    "requiresApiKey": false,
                     "file": "schemas/infravelo/infravelo.mjs",
                     "tools": [
                         {
@@ -252,13 +233,14 @@
             "skillCount": 0
         },
         {
-            "namespace": "nextbike",
-            "name": "nextbike Bike Sharing",
-            "description": "Access nextbike bike sharing data via the legacy API. Get station locations, real-time bike availability, and system information for 50+ German networks including Berlin, Leipzig, and more. Free, no API key required.",
-            "root": "https://api.nextbike.net/maps",
-            "requiresApiKey": false,
+            "folder": "nextbike",
             "schemas": [
                 {
+                    "namespace": "nextbike",
+                    "name": "nextbike Bike Sharing",
+                    "description": "Access nextbike bike sharing data via the legacy API. Get station locations, real-time bike availability, and system information for 50+ German networks including Berlin, Leipzig, and more. Free, no API key required.",
+                    "root": "https://api.nextbike.net/maps",
+                    "requiresApiKey": false,
                     "file": "schemas/nextbike/nextbike.mjs",
                     "tools": [
                         {
@@ -283,13 +265,14 @@
             "skillCount": 0
         },
         {
-            "namespace": "nominatim",
-            "name": "Nominatim",
-            "description": "Geocode addresses and place names to coordinates, and reverse geocode coordinates to human-readable addresses using OpenStreetMap data.",
-            "root": "https://nominatim.openstreetmap.org",
-            "requiresApiKey": false,
+            "folder": "nominatim",
             "schemas": [
                 {
+                    "namespace": "nominatim",
+                    "name": "Nominatim",
+                    "description": "Geocode addresses and place names to coordinates, and reverse geocode coordinates to human-readable addresses using OpenStreetMap data.",
+                    "root": "https://nominatim.openstreetmap.org",
+                    "requiresApiKey": false,
                     "file": "schemas/nominatim/nominatim.mjs",
                     "tools": [
                         {
@@ -319,13 +302,14 @@
             "skillCount": 0
         },
         {
-            "namespace": "overpassmobility",
-            "name": "Overpass Station Mobility",
-            "description": "Specialized OpenStreetMap queries for mobility infrastructure around train stations. Find bike parking (with capacity/type), bus stops, accessibility features (elevators/wheelchair/tactile paving), and nearby amenities. All via Overpass API, free, no key required.",
-            "root": "https://overpass-api.de/api",
-            "requiresApiKey": false,
+            "folder": "overpass",
             "schemas": [
                 {
+                    "namespace": "overpassmobility",
+                    "name": "Overpass Station Mobility",
+                    "description": "Specialized OpenStreetMap queries for mobility infrastructure around train stations. Find bike parking (with capacity/type), bus stops, accessibility features (elevators/wheelchair/tactile paving), and nearby amenities. All via Overpass API, free, no key required.",
+                    "root": "https://overpass-api.de/api",
+                    "requiresApiKey": false,
                     "file": "schemas/overpass/overpassMobility.mjs",
                     "tools": [
                         {
@@ -365,13 +349,14 @@
             "skillCount": 0
         },
         {
-            "namespace": "transportrestdb",
-            "name": "transport.rest DB",
-            "description": "Access Deutsche Bahn (German Railway) data via the transport.rest API. Search stations, get real-time departures and arrivals, plan journeys across all DB services (ICE, IC, RE, RB, S-Bahn), and retrieve trip details. Free, no API key required.",
-            "root": "https://v6.db.transport.rest",
-            "requiresApiKey": false,
+            "folder": "transportrest",
             "schemas": [
                 {
+                    "namespace": "transportrestdb",
+                    "name": "transport.rest DB",
+                    "description": "Access Deutsche Bahn (German Railway) data via the transport.rest API. Search stations, get real-time departures and arrivals, plan journeys across all DB services (ICE, IC, RE, RB, S-Bahn), and retrieve trip details. Free, no API key required.",
+                    "root": "https://v6.db.transport.rest",
+                    "requiresApiKey": false,
                     "file": "schemas/transportrest/transportRestDb.mjs",
                     "tools": [
                         {
@@ -418,21 +403,13 @@
                     "resources": [],
                     "prompts": [],
                     "skills": []
-                }
-            ],
-            "toolCount": 8,
-            "resourceCount": 0,
-            "promptCount": 0,
-            "skillCount": 0
-        },
-        {
-            "namespace": "transportrestvbb",
-            "name": "transport.rest VBB",
-            "description": "Access Berlin-Brandenburg public transit data (VBB) via the transport.rest API. Search stations, get real-time departures and arrivals for S-Bahn, U-Bahn, tram, bus, and regional trains, plan journeys, track vehicles in real-time, and find reachable stops. Free, no API key required.",
-            "root": "https://v6.vbb.transport.rest",
-            "requiresApiKey": false,
-            "schemas": [
+                },
                 {
+                    "namespace": "transportrestvbb",
+                    "name": "transport.rest VBB",
+                    "description": "Access Berlin-Brandenburg public transit data (VBB) via the transport.rest API. Search stations, get real-time departures and arrivals for S-Bahn, U-Bahn, tram, bus, and regional trains, plan journeys, track vehicles in real-time, and find reachable stops. Free, no API key required.",
+                    "root": "https://v6.vbb.transport.rest",
+                    "requiresApiKey": false,
                     "file": "schemas/transportrest/transportRestVbb.mjs",
                     "tools": [
                         {
@@ -474,21 +451,13 @@
                     "resources": [],
                     "prompts": [],
                     "skills": []
-                }
-            ],
-            "toolCount": 7,
-            "resourceCount": 0,
-            "promptCount": 0,
-            "skillCount": 0
-        },
-        {
-            "namespace": "transportrestvbbext",
-            "name": "transport.rest VBB Extended",
-            "description": "Extended Berlin-Brandenburg transit tools: nearby stops, trip search, line info, route shapes, station autocomplete, and journey refresh. Complements the core VBB schema. Free, no API key required.",
-            "root": "https://v6.vbb.transport.rest",
-            "requiresApiKey": false,
-            "schemas": [
+                },
                 {
+                    "namespace": "transportrestvbbext",
+                    "name": "transport.rest VBB Extended",
+                    "description": "Extended Berlin-Brandenburg transit tools: nearby stops, trip search, line info, route shapes, station autocomplete, and journey refresh. Complements the core VBB schema. Free, no API key required.",
+                    "root": "https://v6.vbb.transport.rest",
+                    "requiresApiKey": false,
                     "file": "schemas/transportrest/transportRestVbbExtended.mjs",
                     "tools": [
                         {
@@ -532,19 +501,20 @@
                     "skills": []
                 }
             ],
-            "toolCount": 7,
+            "toolCount": 22,
             "resourceCount": 0,
             "promptCount": 0,
             "skillCount": 0
         },
         {
-            "namespace": "vlocker",
-            "name": "V-Locker",
-            "description": "Access V-Locker smart bicycle parking infrastructure in Switzerland — tower groups, box availability, and community location wishes",
-            "root": "https://live.v-locker.ch",
-            "requiresApiKey": false,
+            "folder": "vlocker",
             "schemas": [
                 {
+                    "namespace": "vlocker",
+                    "name": "V-Locker",
+                    "description": "Access V-Locker smart bicycle parking infrastructure in Switzerland — tower groups, box availability, and community location wishes",
+                    "root": "https://live.v-locker.ch",
+                    "requiresApiKey": false,
                     "file": "schemas/vlocker/vlocker.mjs",
                     "tools": [
                         {
