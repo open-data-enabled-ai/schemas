@@ -1,7 +1,7 @@
 {
-    "generated": "2026-03-28T22:13:22.145Z",
-    "totalNamespaces": 10,
-    "totalTools": 44,
+    "generated": "2026-03-29T01:03:53.710Z",
+    "totalNamespaces": 14,
+    "totalTools": 55,
     "totalResources": 0,
     "namespaces": [
         {
@@ -77,6 +77,145 @@
                 }
             ],
             "toolCount": 3,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "dbrisboards",
+            "name": "DB RIS::Boards",
+            "description": "Access Deutsche Bahn departure and arrival boards via RIS::Boards API. Get real-time departure/arrival information with delays, platform changes, and train details for any station. Requires DB Vertriebspartner access (paid, price on request).",
+            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-boards-netz/v1",
+            "requiresApiKey": true,
+            "schemas": [
+                {
+                    "file": "schemas/db-ris-boards/dbRisBoards.mjs",
+                    "tools": [
+                        {
+                            "name": "getDepartures",
+                            "description": "Get departure board for a station. Returns real-time departures with planned/actual times, platform, train category, line, direction, and delay. Filter by EVA number and time range. Use getArrivals for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getArrivals",
+                            "description": "Get arrival board for a station. Returns real-time arrivals with origin, planned/actual times, platform, and delay information. Use getDepartures for related data.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 2,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "dbrisconnections",
+            "name": "DB RIS::Connections",
+            "description": "Access Deutsche Bahn connection/transfer options via RIS::Connections API. Find connecting services at stations — the core theme of the \"Anschluss erreichen\" hackathon. Requires DB Vertriebspartner access (paid, price on request).",
+            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-connections-netz/v1",
+            "requiresApiKey": true,
+            "schemas": [
+                {
+                    "file": "schemas/db-ris-connections/dbRisConnections.mjs",
+                    "tools": [
+                        {
+                            "name": "getConnections",
+                            "description": "Find connection/transfer options at a station. Returns available connecting services with transfer times, platform changes, and feasibility. Essential for multimodal journey planning.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 1,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "dbrisjourneys",
+            "name": "DB RIS::Journeys + Disruptions",
+            "description": "Access Deutsche Bahn journey and disruption data via RIS APIs. Get real-time journey details with all stops, delays, and current position. Query disruptions affecting services. Requires DB Vertriebspartner access (paid, price on request).",
+            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-journeys-netz/v2",
+            "requiresApiKey": true,
+            "schemas": [
+                {
+                    "file": "schemas/db-ris-journeys/dbRisJourneys.mjs",
+                    "tools": [
+                        {
+                            "name": "getJourneyByJourneyId",
+                            "description": "Get detailed journey information by journey ID. Returns all stops with planned/actual times, delays, platform changes, and current vehicle position. Use searchJourneys for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "searchJourneys",
+                            "description": "Search for journeys by station and time. Returns matching journeys with basic info and journey IDs for detailed lookup. Use getJourneyByJourneyId for related data.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 2,
+            "resourceCount": 0,
+            "promptCount": 0,
+            "skillCount": 0
+        },
+        {
+            "namespace": "dbrisstations",
+            "name": "DB RIS::Stations",
+            "description": "Access Deutsche Bahn station data via RIS::Stations API. Search stations by name, position, or key (EVA, DS100, DHID). Get platforms, sectors, connecting times, equipment, and local services. Free test access (2 months, 10K/month). Paid plans from 4,200 EUR/year.",
+            "root": "https://apis.deutschebahn.com/db-api-marketplace/apis/ris-stations/v1",
+            "requiresApiKey": true,
+            "schemas": [
+                {
+                    "file": "schemas/db-ris-stations/dbRisStations.mjs",
+                    "tools": [
+                        {
+                            "name": "searchStations",
+                            "description": "Search for railway stations. Returns station ID, name, metropolis, available transports, and position. Use getStationsByPosition for related data. Use getStopPlaceByName for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getStationsByPosition",
+                            "description": "Find stations near geographic coordinates. Returns stations sorted by distance with full details. Use searchStations for related data. Use getStopPlaceByName for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getStopPlaceByName",
+                            "description": "Search stop places by name with fuzzy matching. Returns EVA numbers, DHID, coordinates, and available transports. Use searchStations for related data. Use getStationsByPosition for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getStopPlaceByEva",
+                            "description": "Get detailed stop place information by EVA number. Returns name, position, available transports, and group members. Use searchStations for related data. Use getStationsByPosition for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getPlatforms",
+                            "description": "Get platform information for a station including tracks, sectors, height, length, and accessibility details. Use searchStations for related data. Use getStationsByPosition for related data.",
+                            "method": "GET"
+                        },
+                        {
+                            "name": "getConnectingTimes",
+                            "description": "Get connecting/transfer times at a station. Returns minimum transfer times between different transport modes and platforms. Use searchStations for related data. Use getStationsByPosition for related data.",
+                            "method": "GET"
+                        }
+                    ],
+                    "resources": [],
+                    "prompts": [],
+                    "skills": []
+                }
+            ],
+            "toolCount": 6,
             "resourceCount": 0,
             "promptCount": 0,
             "skillCount": 0
