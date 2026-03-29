@@ -1,5 +1,5 @@
 {
-    "generated": "2026-03-29T01:03:53.710Z",
+    "generated": "2026-03-29T14:31:17.922Z",
     "totalNamespaces": 14,
     "totalTools": 55,
     "totalResources": 0,
@@ -12,7 +12,7 @@
             "requiresApiKey": false,
             "schemas": [
                 {
-                    "file": "schemas/bright-sky/bright-sky.mjs",
+                    "file": "schemas/brightsky/bright-sky.mjs",
                     "tools": [
                         {
                             "name": "getWeather",
@@ -53,7 +53,7 @@
             "requiresApiKey": false,
             "schemas": [
                 {
-                    "file": "schemas/datetime-utils/datetimeUtils.mjs",
+                    "file": "schemas/datetimeutils/datetimeUtils.mjs",
                     "tools": [
                         {
                             "name": "getCurrentDatetime",
@@ -89,7 +89,7 @@
             "requiresApiKey": true,
             "schemas": [
                 {
-                    "file": "schemas/db-ris-boards/dbRisBoards.mjs",
+                    "file": "schemas/dbris/dbRisBoards.mjs",
                     "tools": [
                         {
                             "name": "getDepartures",
@@ -120,7 +120,7 @@
             "requiresApiKey": true,
             "schemas": [
                 {
-                    "file": "schemas/db-ris-connections/dbRisConnections.mjs",
+                    "file": "schemas/dbris/dbRisConnections.mjs",
                     "tools": [
                         {
                             "name": "getConnections",
@@ -146,7 +146,7 @@
             "requiresApiKey": true,
             "schemas": [
                 {
-                    "file": "schemas/db-ris-journeys/dbRisJourneys.mjs",
+                    "file": "schemas/dbris/dbRisJourneys.mjs",
                     "tools": [
                         {
                             "name": "getJourneyByJourneyId",
@@ -177,7 +177,7 @@
             "requiresApiKey": true,
             "schemas": [
                 {
-                    "file": "schemas/db-ris-stations/dbRisStations.mjs",
+                    "file": "schemas/dbris/dbRisStations.mjs",
                     "tools": [
                         {
                             "name": "searchStations",
@@ -326,7 +326,7 @@
             "requiresApiKey": false,
             "schemas": [
                 {
-                    "file": "schemas/overpass-mobility/overpassMobility.mjs",
+                    "file": "schemas/overpass/overpassMobility.mjs",
                     "tools": [
                         {
                             "name": "findStationMobility",
@@ -372,7 +372,7 @@
             "requiresApiKey": false,
             "schemas": [
                 {
-                    "file": "schemas/transport-rest-db/transportRestDb.mjs",
+                    "file": "schemas/transportrest/transportRestDb.mjs",
                     "tools": [
                         {
                             "name": "searchLocations",
@@ -433,7 +433,7 @@
             "requiresApiKey": false,
             "schemas": [
                 {
-                    "file": "schemas/transport-rest-vbb/transportRestVbb.mjs",
+                    "file": "schemas/transportrest/transportRestVbb.mjs",
                     "tools": [
                         {
                             "name": "searchLocations",
@@ -489,7 +489,7 @@
             "requiresApiKey": false,
             "schemas": [
                 {
-                    "file": "schemas/transport-rest-vbb/transportRestVbbExtended.mjs",
+                    "file": "schemas/transportrest/transportRestVbbExtended.mjs",
                     "tools": [
                         {
                             "name": "getNearbyLocations",
